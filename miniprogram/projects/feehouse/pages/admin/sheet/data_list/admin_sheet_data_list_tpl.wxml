@@ -1,0 +1,46 @@
+<!-- List Begin -->
+<view class="admin-comm-list">
+	<view wx:if="{{dataList && dataList.total }}" class="load text-grey">共有{{dataList.total}}条符合条件记录</view>
+
+	<view class="table margin-bottom sticky1" style="width:100%">
+		<!-- 表格体 start -->
+		<view class="thead thead-border">
+			<view class="td" style="width:80rpx;">序号</view>
+			<view class="td" style="width:190rpx;">姓名</view>
+			<view class="td" style="width:320rpx;">详情</view>
+			<view class="td full">操作</view>
+		</view>
+
+		<view class="tbody">
+			<view class="tr border" wx:for="{{dataList.list}}" wx:key="key">
+				<view class="td text-grey text-cut" style="width:80rpx;">{{index+1}}</view>
+				<view class="td detail" style="width:190rpx">
+					<text>{{item.SHEET_DATA_FORMS[0].val}}</text>
+					<text>{{item.SHEET_DATA_FORMS[1].val}}</text>
+
+					<text class="text-green text-s" wx:if="{{item.SHEET_DATA_PAY_STATUS==1}}">[已缴清]</text>
+					<text class="text-grey text-s" wx:elif="{{item.SHEET_DATA_PAY_STATUS==99}}">[无需缴费]</text>
+					<text class="text-orange text-s" wx:else>[未缴费]</text>
+
+
+				</view>
+				<view class="td detail" style="width:330rpx;color:#666">
+					<text style="font-size: 24rpx;margin-bottom: 10rpx;">《{{item.SHEET_DATA_SHEET_TITLE}}》</text>
+					<text class="text-black" style="font-size: 28rpx;margin-bottom: 10rpx;">金额：¥{{item.SHEET_DATA_FORMS[2].val}}元</text>
+					<text wx:if="{{idx>2}}" wx:for="{{item.SHEET_DATA_FORMS}}" wx:for-index="idx" wx:for-item="itm" wx:key="k">{{itm.title}}：{{itm.val}}</text>
+					<text wx:if="{{item.SHEET_DATA_PAY_STATUS==1}}" class="text-grey">支付时间：{{item.SHEET_DATA_PAY_TIME}}</text>
+				</view>
+
+				<view class="td full oprt">
+					<view wx:if="{{item.SHEET_DATA_PAY_STATUS!=99}}" bindtap="url" bindtap="bindRefundTap" data-idx="{{index}}" data-id="{{item._id}}" class="icon-moneybag margin-top-xxs text-orange">退款</view>
+
+					<view bindtap="url" data-url="../data_edit/admin_sheet_data_edit?id={{item.SHEET_DATA_SHEET_ID}}&idx={{index}}" class="icon-edit margin-top-xxs text-black">修改</view>
+
+					<view bindtap="bindDelTap" data-id="{{item._id}}" class="icon-delete text-red">删除</view>
+
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+<!-- List END -->

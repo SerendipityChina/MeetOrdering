@@ -1,0 +1,45 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l load-project"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
+
+<view class="main" wx:if="{{isLoad}}">
+	<view class="pay-info shadow-project">
+		<view class="line">
+			<view class="left">
+				<view class="left-line1"><text class="icon-newshotfill text-project"></text>{{sheetData.sheet.SHEET_TITLE}}</view>
+				<view class="left-line2">{{sheetData.sheet.SHEET_OBJ.start}}~{{sheetData.sheet.SHEET_OBJ.end}}</view>
+				<view class="left-line2" wx:if="{{sheetData.sheet.SHEET_OBJ.desc}}">说明：{{sheetData.sheet.SHEET_OBJ.desc}}</view>
+			</view> 
+			<view wx:if="{{sheetData.SHEET_DATA_PAY_STATUS==0}}" class="right text-orange">待缴费</view>
+			<view wx:if="{{sheetData.SHEET_DATA_PAY_STATUS==1}}" class="right"><image class="pay-icon" src="../../../images/pay.png" /></view>
+
+		</view>
+		<view class="line-data-list">
+			<view class="item" wx:if="{{index!=2}}" wx:for="{{sheetData.SHEET_DATA_FORMS}}" wx:key="k" wx:for-item="itm">
+				<view class="left">{{itm.title}}</view>
+				<view class="right">{{itm.val}}</view>
+			</view>
+
+			<view class="item" wx:key="k" wx:for-item="itm" wx:if="{{sheetData.SHEET_DATA_PAY_STATUS==1&&sheetData.SHEET_DATA_PAY_TIME}}">
+				<view class="left">支付时间</view>
+				<view class="right">{{sheetData.SHEET_DATA_PAY_TIME}}</view>
+			</view>
+
+		</view>
+		<view wx:if="{{sheetData.SHEET_DATA_PAY_STATUS==0}}" class="pay-btn" bindtap="bindPayTap" data-id="{{sheetData._id}}" data-idx="{{idx}}">
+			<view class="left">
+				<text class="sy">¥</text>
+				<text class="price">{{sheetData.SHEET_DATA_FEE/100}}</text>
+			</view>
+			<view class="right">去支付</view>
+		</view>
+		<view wx:else class="pay-btn bg-grey light">
+			<view class="left">
+				<text class="sy">¥</text>
+				<text class="price">{{sheetData.SHEET_DATA_FEE/100}}</text>
+			</view>
+			<view wx:if="{{sheetData.SHEET_DATA_PAY_STATUS==1}}" class="right">已支付</view>
+			<view wx:if="{{sheetData.SHEET_DATA_PAY_STATUS==99}}" class="right">无需支付</view>
+		</view>
+	</view>
+
+</view>

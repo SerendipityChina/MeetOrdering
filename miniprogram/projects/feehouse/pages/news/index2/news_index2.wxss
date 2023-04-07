@@ -1,0 +1,13 @@
+@import "../index/news_index.wxss";
+
+.comm-list-box .item-line .left .order {
+	color: #fff !important;
+	border-radius: 20%;
+	width: unset;
+	padding: 20rpx 10rpx;
+}
+
+.comm-list-box .item-line {
+	border-radius: 20rpx;
+	box-shadow: 6rpx 6rpx 8rpx rgba(216, 220, 223, 0.5);
+}

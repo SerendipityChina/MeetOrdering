@@ -1,0 +1,20 @@
+<block wx:if="{{isAdmin&&isLoad}}">
+	<cmpt-comm-list _params="{{_params}}" source='admin' type="admin-sheet-data-list" search="{{search}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="admin/sheet_data_list" sortMenusDefaultIndex="0" topBottom="50" placeholder="搜索手机，姓名" bind:list="bindCommListCmpt">
+
+		<view slot="searchEnd">
+		 
+		</view>
+
+		<!-- List BEGIN -->
+		<include src="../data_list/admin_sheet_data_list_tpl.wxml" />
+		<!-- List END -->
+
+		<!--load begin-->
+		<import src="../../../../../../tpls/public/list_load_tpl.wxml" />
+		<template is="listLoadTpl" data="{{dataList,skin:'text-grey'}}" />
+		<!--load end-->
+
+
+	</cmpt-comm-list>
+
+</block>

@@ -1,0 +1,36 @@
+<template name="menuTpl"> 
+	<view class="tab-bar" >   
+		<view wx:if="{{returnHome}}" class="tab-bar-home" bindtap="url" data-type="relaunch"
+			data-url="/pages/home/index/home_index">
+			<text class="tab-bar-home-text icon-homefill text-grey"></text>
+		</view>
+
+		<view class="tab-bar-border"></view>
+		<view class="tab-bar-item" bindtap="url" data-type="relaunch" data-url="/projects/feehouse/pages/news/index/news_index">
+			<image class="tab-icon" src="/projects/feehouse/images/tabbar/service{{curMenu=='news_index'?'_cur':''}}.png"></image>
+			<view class="tab-text {{curMenu=='news_index'?'menu-project':''}}">最新通知</view>
+		</view>  
+
+		<view class="tab-bar-item" bindtap="url" data-type="relaunch" data-url="/projects/feehouse/pages/news/index2/news_index2">
+			<image class="tab-icon" src="/projects/feehouse/images/tabbar/know{{curMenu=='news_index2'?'_cur':''}}.png"></image>
+			<view class="tab-text {{curMenu=='news_index2'?'menu-project':''}}">缴费须知</view>
+		</view>   
+
+		<view class="tab-bar-item" bindtap="url" data-type="relaunch" data-url="/projects/feehouse/pages/sheet/my_data_list/sheet_my_data_list">
+			<image class="tab-icon" src="/projects/feehouse/images/tabbar/task{{curMenu=='my_data'?'_cur':''}}.png"></image>
+			<view class="tab-text {{curMenu=='my_data'?'menu-project':''}}">我的账单</view>
+		</view>   
+		 
+		<view class="tab-bar-item" bindtap="url" data-type="relaunch" data-url="/projects/feehouse/pages/sheet/stat/sheet_stat">
+			<image class="tab-icon" src="/projects/feehouse/images/tabbar/stat{{curMenu=='my_data_stat'?'_cur':''}}.png"></image>
+			<view class="tab-text {{curMenu=='my_data_stat'?'menu-project':''}}">缴费统计</view>
+		</view>  
+	 
+		<view class="tab-bar-item" bindtap="url" data-type="relaunch" data-url="/projects/feehouse/pages/my/index/my_index">
+			<image class="tab-icon" src="/projects/feehouse/images/tabbar/my{{curMenu=='my_index'?'_cur':''}}.png"></image>
+			<view class="tab-text {{curMenu=='my_index'?'menu-project':''}}">个人中心</view>
+		</view>
+
+
+	</view>
+</template>

@@ -1,0 +1,123 @@
+@import "../../../../../style/public/comm_box_list.wxss";
+@import "../../../style/skin.wxss";
+ 
+
+.main {
+	padding: 20rpx !important; 
+}
+  
+.pay-info {
+	border-radius: 40rpx;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 30rpx 40rpx;
+	background-color: #fff;
+}
+
+.pay-info .line {
+	width: 100%;
+	display: flex;
+}
+
+.pay-info .line .left {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+
+.pay-info .line .left .left-line1 {
+	font-size: 32rpx;
+	width: 100%;
+	font-weight: bold;
+	text-align: left;
+	color: #333;
+}
+
+.pay-info .line .left .left-line2 {
+	font-size: 26rpx;
+	width: 100%;
+	text-align: left;
+	color: #999;
+	margin-top: 20rpx;
+}
+
+
+.pay-info .line .right {
+	font-size: 30rpx;
+	font-weight: bold;
+	padding: 0 0rpx;
+	min-width: 130rpx;
+	text-align: right;
+}
+
+.pay-info .line  image {
+	width: 140rpx;
+	height: 140rpx;
+}
+
+.pay-info .line-data-list {
+	width: 100%;
+	display: flex;
+	padding: 30rpx 0;
+	flex-direction: column;
+}
+
+.pay-info .line-data-list .item {
+	width: 100%;
+	display: flex;
+	align-items: baseline;
+	font-size: 26rpx;
+	padding: 15rpx 0;
+	border-bottom: 2rpx dashed #eee;
+	color: #666;
+}
+
+.pay-info .line-data-list .item:last-child { 
+	border-bottom: 0; 
+}
+
+.pay-info .line-data-list .item .left {
+	width: 200rpx;
+	text-align: left;
+}
+
+.pay-info .line-data-list .item .right {
+	flex: 1;
+	text-align: right;
+}
+
+
+.pay-info .pay-btn {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: #fff;
+	padding: 30rpx 40rpx;
+	width: 100%;
+	background-color: var(--projectColor);
+	border-radius: 25rpx;
+	margin-top: 30rpx;
+}
+
+.pay-info .pay-btn .left {
+	display: flex;
+	align-items: flex-start;
+}
+
+.pay-info .pay-btn .left .sy {
+	font-size: 26rpx;
+	margin-right: 7rpx;
+	margin-top: 5rpx;
+}
+
+.pay-info .pay-btn .left .price {
+	font-size: 40rpx;
+}
+
+.pay-info .pay-btn .right {
+	font-size: 28rpx;
+}
+ 

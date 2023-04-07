@@ -1,0 +1,184 @@
+@import "../../../../../style/public/comm_box_list.wxss";
+@import "../../../style/skin.wxss";
+
+.main {
+	padding: 0;
+}
+
+.text-l {
+	font-size: 28rpx !important;
+}
+
+.tab .item {
+	position: relative;
+}
+
+.tab .item {
+	color: #333 !important;
+}
+
+.tab .item.cur {
+	border-bottom: 0rpx solid !important;
+	color: #333 !important;
+}
+
+.tab .item.cur:after {
+	width: 50%;
+	position: absolute;
+	bottom: 0rpx;
+	left: 50%;
+	height: 6rpx;
+	content: '';
+	background-color: var(--projectColor);
+	transform: translateX(-50%);
+}
+
+.load.notexist::after {
+	content: "您没有缴费记录";
+}
+
+.hint {
+	width: 100%;
+	background-color: #f5eedf;
+	color: #e9ab4e;
+	padding: 18rpx 25rpx;
+	border-radius: 5rpx;
+	margin-bottom: 20rpx;
+	font-size: 24rpx;
+}
+
+.down {
+	width: 100%;
+	padding: 0rpx 20rpx 40rpx;
+}
+
+.down .chart {
+	width: 100%;
+	background-color: #fff;
+	padding: 40rpx 30rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.down .chart .title {
+	font-size: 26rpx;
+}
+
+.down .chart .canvas {
+	width: 100%;
+	height: 440rpx;
+	display: flex;
+}
+
+.down .chart .chart-type {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.down .chart .chart-type .item {
+	font-size: 24rpx;
+	background-color: #eee;
+	padding: 10rpx 25rpx;
+	border-radius: 10rpx;
+	color: #999;
+}
+
+.down .chart .chart-type .item.cur {
+	color: #333;
+}
+
+
+.sheet-result {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 20rpx 10rpx;
+	background-color: #fff;
+	margin-top: 25rpx;
+}
+
+.sheet-result .item {
+	width: 100%;
+	display: flex;
+	font-size: 24rpx;
+	flex-direction: column;
+	padding: 0rpx 15rpx 0rpx;
+}
+
+.sheet-result .item .title {
+	padding: 15rpx 15rpx;
+	border-bottom: 2rpx dashed #ddd;
+	margin-bottom: 0 !important;
+	display: flex;
+	width: 100%;
+	align-items: baseline;
+	font-size: 26rpx;
+	color: #666;
+}
+
+.sheet-result .item:last-child .title {
+	border-bottom: 0rpx solid #eee !important;
+}
+
+.sheet-result .item .title .left {
+	flex: 1;
+}
+
+.sheet-result .item .title .mid {
+	min-width: 80rpx;
+	text-align: right;
+	margin-left: 10rpx;
+}
+
+.sheet-result .item .title .right {
+	width: 80rpx;
+	text-align: right;
+	font-size: 30rpx;
+}
+
+.sheet-result .item .line {
+	width: 100%;
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+	padding: 20rpx 12rpx;
+	border-bottom: 1rpx dashed #ddd;
+	font-size: 24rpx;
+	color: #999;
+	background-color: #f9f9f9;
+}
+
+.sheet-result .item .line .left {
+	width: 40%;
+	text-align: left;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
+.sheet-result .item .line .right {
+	flex: 1;
+	text-align: right;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
+.refresh {
+	position: fixed;
+	left: 10rpx;
+	bottom: 200rpx;
+	z-index: 99999;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(101, 136, 230, 0.2);
+	border-radius: 50%;
+	width: 70rpx;
+	height: 70rpx;
+	font-size: 24rpx;
+	color: #4682B4
+}

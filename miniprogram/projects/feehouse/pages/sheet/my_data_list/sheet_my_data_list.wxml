@@ -1,0 +1,49 @@
+<block wx:if="{{isLoad}}">
+	<cmpt-comm-list id="list" _params="{{_params}}" type="my_sheet_data_list" search="{{search||''}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="sheet/my_data_list" isTotalMenu="{{true}}" sortMenusDefaultIndex="0" topBottom="120" placeholder="搜索" bind:list="bindCommListCmpt">
+
+		<view slot="searchEnd">
+
+		</view>
+
+		<!-- List Begin -->
+		<view class="list">
+
+			<view class="item shadow-project" wx:for="{{dataList.list}}" wx:key="index" bindtap="url" data-url="../data_detail/sheet_data_detail?id={{item._id}}&idx={{index}}">
+				<view class="left">
+					<view class="line1">{{item.sheet.SHEET_TITLE}}</view>
+					<view wx:if="{{item.SHEET_DATA_PAY_STATUS==1}}" class="line2 text-green">已缴费</view>
+					<view wx:elif="{{item.SHEET_DATA_PAY_STATUS==99}}" class="line2 text-grey" style="font-weight: normal;">无需缴费</view>
+					<view wx:else class="line2 text-orange">待缴费</view>
+				</view>
+				<view class="right  {{item.SHEET_DATA_PAY_STATUS==0?'text-orange':'text-grey'}}">
+					<text class="sy">¥</text>
+					<text class="price">{{item.SHEET_DATA_FEE/100}}</text>
+				</view>
+				<view class="flag"><text class="icon-right"></text></view>
+			</view>
+
+			<!--load begin-->
+			<import src="../../../../../tpls/public/list_load_tpl.wxml" />
+			<template is="listLoadTpl" data="{{skin:'load-project',dataList}}" />
+			<!--load end-->
+
+		</view>
+		<!-- List END -->
+
+	</cmpt-comm-list>
+
+	<!--  button Begin -->
+	<!--  button END -->
+
+
+	<view class="refresh" bindtap="bindRefreshTap">
+		<view class="txt">刷新</view>
+	</view>
+
+
+	<block wx:if="{{skin.IS_SUB}}">
+		<import src="../../tpls/menu_tpl.wxml" />
+		<template is="menuTpl" data="{{curMenu:'my_data',returnHome:false}}" />
+	</block>
+
+</block>

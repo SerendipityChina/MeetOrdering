@@ -1,0 +1,54 @@
+<view class="main">
+	<scroll-view scroll-x class="bg-white tab text-l text-bold text-center solid-bottom">
+		<view bindtap="bindTimeTap" data-time="180" class="item text-project {{time==180?'cur':''}}">最近半年</view>
+		<view bindtap="bindTimeTap" data-time="365" class="item text-gray {{time==365?'cur':''}}">最近1年</view>
+		<view bindtap="bindTimeTap" data-time="730" class="item text-gray {{time==730?'cur':''}}">最近2年</view>
+	</scroll-view>
+
+	<view class="hint"><text class="icon-info margin-right-xs"></text>统计时间为用户缴费时间</view>
+	<view class="down">
+		<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l load-project"></view>
+		<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
+
+		<block wx:if="{{isLoad}}">
+			<view class="card-project shadow-project chart">
+				<canvas canvas-id="columnCanvas" disable-scroll="true" class="canvas"></canvas>
+				<view class="chart-type">
+					<view bindtap="bindTypeTap" class="item {{type=='column'?'cur':''}}" data-type="column">柱形图</view>
+					<view bindtap="bindTypeTap" class="item {{type=='line'?'cur':''}}" data-type="line">折线图</view>
+					<view bindtap="bindTypeTap" class="item {{type=='area'?'cur':''}}" data-type="area">区域图</view>
+				</view>
+			</view>
+
+			<view class="card-project shadow-project sheet-result">
+				<view class="item" wx:for="{{chart.list}}" wx:key="key">
+					<view class="title" bindtap="bindShowSheetDataTap" data-idx="{{index}}" data-show="{{item.show}}">
+						<view class="left"><text class="text-normal margin-right-xxs"></text>{{item.sheet.SHEET_TITLE}}</view>
+						<view class="mid">¥{{item.SHEET_DATA_FEE/100}}</view>
+						<view class="right"><text class="icon-{{!item.show?'fold':'unfold'}}"></text></view>
+					</view>
+					<view wx:if="{{item.show&&idx>2}}" wx:for="{{item.SHEET_DATA_FORMS}}" wx:key="k" wx:for-index="idx" wx:for-item="itm" class="line">
+						<view class="left">{{itm.title}}</view>
+						<view class="right">{{itm.val}}</view>
+					</view>
+					<view wx:if="{{item.show}}" class="line">
+						<view class="left">支付时间</view>
+						<view class="right">{{item.SHEET_DATA_PAY_TIME}}</view>
+					</view>
+				</view>
+			</view>
+		</block>
+
+	</view>
+	<view style="height: 200rpx;"></view>
+
+</view>
+
+<view class="refresh" bindtap="bindRefreshTap"> 
+	<view class="txt">刷新</view>
+</view>
+
+<block wx:if="{{skin.IS_SUB}}">
+	<import src="../../tpls/menu_tpl.wxml" />
+	<template is="menuTpl" data="{{curMenu:'my_data_stat',returnHome:false}}" />
+</block>
